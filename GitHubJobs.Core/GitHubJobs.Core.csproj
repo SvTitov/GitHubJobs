@@ -9,6 +9,7 @@
     <Folder Include="Data\Models\Incoming\" />
     <Folder Include="Data\Models\Outgoing\" />
     <Folder Include="Data\Repositiry\Attributes\" />
+    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
