@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace GitHubJobs.Core.Data.Models
+namespace GitHubJobs.Core.Data.Models.Incoming
 {
     public class JobDescription
     {
