@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("GitHubJobs.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("GitHubJobs.Droid.Resource", IsApplication=true)]
 
-namespace GitHubJobs
+namespace GitHubJobs.Droid
 {
 	
 	

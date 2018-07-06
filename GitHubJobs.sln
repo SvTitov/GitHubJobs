@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubJobs.Droid", "GitHubJobs\GitHubJobs.Droid.csproj", "{2497EB07-C980-4BBF-A440-C38F5AA32528}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubJobs.Droid", "GitHubJobs.Droid\GitHubJobs.Droid.csproj", "{2497EB07-C980-4BBF-A440-C38F5AA32528}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubJobs.Core", "GitHubJobs.Core\GitHubJobs.Core.csproj", "{617AE693-2D8A-4DDD-9A4C-F47FE6881FB4}"
 EndProject
