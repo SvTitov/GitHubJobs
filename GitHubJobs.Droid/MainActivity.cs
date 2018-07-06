@@ -10,13 +10,13 @@ using GitHubJobs.Core.Data.Models.Incoming;
 using System.Collections.Generic;
 using GitHubJobs.Core.NinjectModules;
 using GitHubJobs.Core.Data.Models.Outgoing;
+using GitHubJobs.Droid.Fragments;
 
 namespace GitHubJobs.Droid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class MainActivity : AppCompatActivity
     {
-        private MainScreenViewModel _viewModel;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,15 +25,13 @@ namespace GitHubJobs.Droid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            _viewModel = ApplicationStarter.AppKernel.Get<MainScreenViewModel>();
-
-            _viewModel.GetJobs(new JobRequest { Description = "C#", FullTime = "true" }).Subscribe(onNext: OnUpdateJobs);
+           
+            SupportFragmentManager
+                .BeginTransaction()
+                .Replace(Resource.Id.fragment_container, new JobListFragment())
+                .Commit();
         }
 
-        private void OnUpdateJobs(IEnumerable<JobDescription> jobs)
-        {
-            
-        }
     }
 }
 
