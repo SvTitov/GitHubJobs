@@ -13,19 +13,15 @@ namespace GitHubJobs.Console
     {
         static void Main(string[] args)
         {
-            //    GitHubJobs.Core.Data.Repositiry.RestWrapper wrapper = new Core.Data.Repositiry.RestWrapper(@"https://jobs.github.com/positions.json");
-
-            //MainScreenViewModel model = new MainScreenViewModel();
-            //model._repository = new GitHubJobsRepository();
-
-            //model.GetJobs(new JobRequest { Description = "C#", FullTime = "true" }).Subscribe(onNext: (obj) =>
-            //{
-            //    foreach (var item in obj)
-            //        System.Console.WriteLine(item);
-            //});
-
             ApplicationStarter.Init();
             var ss = ApplicationStarter.AppKernel.Get<MainScreenViewModel>();
+
+            ss.GetJobs(new JobRequest { Description = "C#", FullTime = "true" }).Subscribe(onNext: (obj) =>
+            {
+                foreach (JobDescription item in obj)
+                    System.Console.WriteLine(item);
+            });
+
 
 
             System.Console.ReadKey(true);

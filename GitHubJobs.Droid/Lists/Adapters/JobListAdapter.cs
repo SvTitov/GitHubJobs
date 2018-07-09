@@ -29,7 +29,12 @@ namespace GitHubJobs.Droid.Lists.Adapters
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             JobItemViewHolder vh = holder as JobItemViewHolder;
-            vh.JobDesription.Text = jobsList[position].Description;
+
+            vh.JobDesription.Text = jobsList[position].Description.Substring(0, 100) + "...";
+            vh.JobLocation.Text = jobsList[position].Location;
+            vh.JobType.Text = jobsList[position].Type;
+            vh.JobTitle.Text = jobsList[position].Title;
+            vh.JobCompany.Text = jobsList[position].Company;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

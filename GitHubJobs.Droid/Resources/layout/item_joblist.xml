@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <android.support.v7.widget.CardView
@@ -14,11 +15,52 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="8dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Company"
+                    android:textSize="12dp"
+                    android:textStyle="normal"
+                    android:id="@+id/job_company"
+                    android:gravity="right"
+                    android:layout_alignParentRight="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Title"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:id="@+id/job_title"
+                    android:gravity="left"
+                    android:layout_below="@id/job_company"
+                    android:layout_alignParentLeft="true" />
+            </RelativeLayout>
             <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/job_description"/>
-            
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/job_description"
+                tools:text="Too big text that i can't write..." />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Type of job"
+                    android:textColor="#ffff0000"
+                    android:id="@+id/job_type"
+                    android:layout_alignParentLeft="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Location"
+                    android:textColor="#ff001eff"
+                    android:id="@+id/job_location"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </FrameLayout>
