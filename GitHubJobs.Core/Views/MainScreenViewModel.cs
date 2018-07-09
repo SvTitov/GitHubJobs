@@ -25,6 +25,7 @@ namespace GitHubJobs.Core.Views
                                                {
                                                    var result = await _repository.GetAllJobs();
                                                    observer.OnNext(result);
+                                                   observer.OnCompleted();
                                                }));
         }
 
@@ -36,6 +37,7 @@ namespace GitHubJobs.Core.Views
                                                {
                                                    var result = await _repository.GetJobs(request);
                                                    observer.OnNext(result);
+                                                   observer.OnCompleted();
                                                }));
         }
     }
