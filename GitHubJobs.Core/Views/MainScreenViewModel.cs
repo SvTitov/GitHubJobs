@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Reactive.Concurrency;
 using GitHubJobs.Core.Data.Models.Outgoing;
 using System;
+using System.Reactive.Disposables;
 
 namespace GitHubJobs.Core.Views
 {
@@ -17,18 +18,6 @@ namespace GitHubJobs.Core.Views
             this._repository = repository;
         }
 
-        public IObservable<IEnumerable<JobDescription>> GetJobs()
-        {
-            return Observable.Create<IEnumerable<JobDescription>>(observer => 
-                            Scheduler.Schedule(scheduler: Scheduler.Default,
-                                               action: async () =>
-                                               {
-                                                   var result = await _repository.GetAllJobs();
-                                                   observer.OnNext(result);
-                                                   observer.OnCompleted();
-                                               }));
-        }
-
         public IObservable<IEnumerable<JobDescription>> GetJobs(JobRequest request)
         {
             return Observable.Create<IEnumerable<JobDescription>>(observer =>
@@ -39,6 +28,7 @@ namespace GitHubJobs.Core.Views
                                                    observer.OnNext(result);
                                                    observer.OnCompleted();
                                                }));
+
         }
     }
 }

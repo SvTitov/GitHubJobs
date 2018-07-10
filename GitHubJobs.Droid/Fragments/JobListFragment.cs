@@ -74,6 +74,10 @@ namespace GitHubJobs.Droid.Fragments
             });
         }
 
+        public override void OnActivityResult(int requestCode, int resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+        }
 
         private void OnUpdateJobs(IEnumerable<JobDescription> jobs)
         {
