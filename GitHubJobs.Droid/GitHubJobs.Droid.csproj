@@ -94,9 +94,8 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
-    <AndroidResource Include="Resources\layout\job_criteria.axml" />
+    <AndroidResource Include="Resources\layout\job_criteria.xml" />
     <AndroidResource Include="Resources\menu\toolbar_main_menu.xml" />
-    <AndroidResource Include="Resources\drawable\ic_criteria.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Flurl.Http">
@@ -134,8 +133,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\menu\" />
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\ic_criteria.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

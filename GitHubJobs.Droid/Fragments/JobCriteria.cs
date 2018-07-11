@@ -6,14 +6,17 @@ using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using GitHubJobs.Core;
+using GitHubJobs.Core.Events;
 using GitHubJobs.Core.Views;
 using Ninject;
 
 namespace GitHubJobs.Droid.Fragments
 {
-    public class JobCriteria : DialogFragment
+    public class JobCriteria : Android.Support.V4.App.DialogFragment, ICriteriaEdit
     {
         private MainScreenViewModel _viewModel;
+
+        public OnCriteriaSubmit OnSubmit { get; set; }
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,10 +36,17 @@ namespace GitHubJobs.Droid.Fragments
 
             Observable.FromEventPattern<EventArgs>(btn, "Click").Subscribe(args => 
             {
-                
+                this.Dismiss();
+                OnSubmit?.Invoke(new Core.Data.Models.Outgoing.JobRequest { Description = descr.Text, FullTime = fullTime.Checked.ToString(), Location = loc.Text });
             });
 
             return mainView;
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            OnSubmit = null;
         }
     }
 }

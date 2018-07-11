@@ -2843,8 +2843,8 @@ namespace GitHubJobs.Droid
 			// aapt resource value: 0x7f0800ad
 			public const int job_type = 2131230893;
 			
-			// aapt resource value: 0x7f0800a9
-			public const int jobs_list = 2131230889;
+			// aapt resource value: 0x7f0800a8
+			public const int jobs_list = 2131230888;
 			
 			// aapt resource value: 0x7f08009b
 			public const int largeLabel = 2131230875;
@@ -2864,8 +2864,8 @@ namespace GitHubJobs.Droid
 			// aapt resource value: 0x7f08006e
 			public const int list_item = 2131230830;
 			
-			// aapt resource value: 0x7f0800a8
-			public const int loadingIndicator = 2131230888;
+			// aapt resource value: 0x7f0800a9
+			public const int loadingIndicator = 2131230889;
 			
 			// aapt resource value: 0x7f0800b0
 			public const int location = 2131230896;

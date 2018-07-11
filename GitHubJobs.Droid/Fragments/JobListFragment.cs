@@ -34,8 +34,8 @@ namespace GitHubJobs.Droid.Fragments
 
             _viewModel = ApplicationStarter.AppKernel.Get<MainScreenViewModel>();
 
-            _viewModel.GetJobs(new JobRequest { Description = "C#", FullTime = "true" })
-                      .Subscribe(onNext: OnUpdateJobs, onCompleted: HideLoadingIndicator);
+            //_viewModel.GetJobs(new JobRequest { Description = "C#", FullTime = "true" })
+            //          .Subscribe(onNext: OnUpdateJobs, onCompleted: HideLoadingIndicator);
         }
 
         private void ShowLoadingIndicator()
@@ -51,7 +51,7 @@ namespace GitHubJobs.Droid.Fragments
             var mainView = inflater.Inflate(Resource.Layout.fragment_joblist, container, false);
             _progressDialog = mainView.FindViewById<ProgressBar>(Resource.Id.loadingIndicator);
 
-            ShowLoadingIndicator();
+            //ShowLoadingIndicator();
 
             var recycler = mainView.FindViewById<RecyclerView>(Resource.Id.jobs_list);
             var llManager = new LinearLayoutManager(this.Context);
@@ -61,6 +61,8 @@ namespace GitHubJobs.Droid.Fragments
 
             _jobListAdapter = new JobListAdapter(_jobs);
             recycler.SetAdapter(_jobListAdapter);
+
+            this.HasOptionsMenu = true;
 
             return mainView;
         }
@@ -77,6 +79,33 @@ namespace GitHubJobs.Droid.Fragments
         public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
+        {
+            inflater.Inflate(Resource.Menu.toolbar_main_menu, menu);
+            base.OnCreateOptionsMenu(menu, inflater);
+        }
+
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.edit_criteria)
+            {
+                JobCriteria criteriaDialog = new JobCriteria();
+                criteriaDialog.OnSubmit = OnSubmit;
+
+                criteriaDialog.Show(this.Activity.SupportFragmentManager, string.Empty);
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+
+        private void OnSubmit(JobRequest request)
+        {
+            this.ShowLoadingIndicator();
+            _viewModel.GetJobs(request)
+                     .Subscribe(onNext: OnUpdateJobs, onCompleted: HideLoadingIndicator);
         }
 
         private void OnUpdateJobs(IEnumerable<JobDescription> jobs)

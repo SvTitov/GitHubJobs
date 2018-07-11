@@ -36,23 +36,6 @@ namespace GitHubJobs.Droid
                 .Replace(Resource.Id.fragment_container, new JobListFragment())
                 .Commit();
         }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.toolbar_main_menu, menu);
-            return true;
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            if (item.ItemId == Resource.Id.edit_criteria)
-            {
-                JobCriteria criteriaDialog = new JobCriteria();
-                criteriaDialog.Show(SupportFragmentManager, string.Empty);
-            }
-
-            return base.OnOptionsItemSelected(item);
-        }
     }
 }
 
