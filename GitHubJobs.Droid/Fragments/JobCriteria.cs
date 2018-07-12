@@ -14,15 +14,13 @@ namespace GitHubJobs.Droid.Fragments
 {
     public class JobCriteria : Android.Support.V4.App.DialogFragment, ICriteriaEdit
     {
-        private MainScreenViewModel _viewModel;
-
         public OnCriteriaSubmit OnSubmit { get; set; }
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            _viewModel = ApplicationStarter.AppKernel.Get<MainScreenViewModel>();
+            SetStyle(Android.Support.V4.App.DialogFragment.StyleNoTitle, Resource.Style.DialogFragmentStyle);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
