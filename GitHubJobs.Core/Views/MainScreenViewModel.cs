@@ -11,7 +11,7 @@ namespace GitHubJobs.Core.Views
 {
     public class MainScreenViewModel
     {
-        public IGitHubJobsRepository _repository;
+        private IGitHubJobsRepository _repository;
 
         public MainScreenViewModel(IGitHubJobsRepository repository)
         {
