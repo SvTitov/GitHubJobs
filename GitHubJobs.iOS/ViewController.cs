@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using GitHubJobs.Core.Data.Models.Incoming;
 using GitHubJobs.Core.Data.Models.Outgoing;
 using System.Linq;
+using CoreGraphics;
 
 namespace GitHubJobs.iOS
 {
@@ -17,6 +18,7 @@ namespace GitHubJobs.iOS
         private IEnumerable<JobDescription> _jobs;
         private MainScreenViewModel _viewModel;
         private JobsTableSource _jobsSource;
+        private UIAlertController _alert;
 
         protected ViewController(IntPtr handle) : base(handle)
         {
@@ -31,9 +33,36 @@ namespace GitHubJobs.iOS
             _viewModel.GetJobs(new JobRequest { Description = "C#", FullTime = "true" })
                       .Subscribe(onNext: OnReceiveData);
 
+            InitAlert();
+
+            this.ShowLoadingIndicator();
+
             this.tableView.TableFooterView = new UIView();
             this.tableView.Source = _jobsSource = new JobsTableSource(Enumerable.Empty<JobDescription>());
             this.tableView.NumberOfRowsInSection(1);
+        }
+
+        private void InitAlert()
+        {
+            _alert = UIAlertController.Create(string.Empty, "Loading...", UIAlertControllerStyle.Alert);
+            _alert.ModalPresentationStyle = UIModalPresentationStyle.BlurOverFullScreen;
+
+            var indicator = new UIActivityIndicatorView(new CGRect(10, 5, 50, 50));
+            indicator.HidesWhenStopped = true;
+            indicator.StartAnimating();
+            indicator.ActivityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray;
+
+            _alert.View.AddSubview(indicator);
+        }
+
+        private void ShowLoadingIndicator()
+        {
+            this.PresentViewController(_alert, true, null);
+        }
+
+        private void HideLoadingIndicator()
+        {
+            this.DismissViewController(true, null);
         }
 
         private void OnReceiveData(IEnumerable<JobDescription> jobs)
@@ -41,7 +70,11 @@ namespace GitHubJobs.iOS
             _jobs = jobs;
             _jobsSource.UpdateJobs(_jobs);
 
-            InvokeOnMainThread(this.tableView.ReloadData);
+            InvokeOnMainThread(()=>
+            {
+                this.tableView.ReloadData();  
+                HideLoadingIndicator();
+            });
         }
 
         public override void DidReceiveMemoryWarning()

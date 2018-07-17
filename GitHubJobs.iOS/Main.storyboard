@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dka-b8-25F">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Jj3-E1-Db5">
+            <objects>
+                <navigationController id="Dka-b8-25F" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Zy-Zn-b27">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4xM-9J-HVW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JyN-vw-SQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1297" y="285"/>
+        </scene>
+        <!--GitHubJobs-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -33,7 +49,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQq-1u-XD2">
-                                            <rect key="frame" x="16" y="26" width="50.5" height="22"/>
+                                            <rect key="frame" x="16" y="26" width="343" height="22"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -53,7 +69,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aTQ-by-FBB">
                                             <rect key="frame" x="16" y="48" width="343" height="123.5"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="04Y-KA-Jb6">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04Y-KA-Jb6">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="123.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -75,6 +91,7 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="HEv-4c-t5s" secondAttribute="bottom" id="Pd4-T8-Te7"/>
                                         <constraint firstAttribute="trailing" secondItem="mcL-ER-LM1" secondAttribute="trailing" constant="5" id="RFk-ar-5OO"/>
                                         <constraint firstItem="cHf-Sq-hTi" firstAttribute="trailing" secondItem="rVp-X9-Fav" secondAttribute="trailingMargin" id="ZN8-ce-itL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dQq-1u-XD2" secondAttribute="trailing" id="f2o-eY-glq"/>
                                         <constraint firstItem="dQq-1u-XD2" firstAttribute="leading" secondItem="rVp-X9-Fav" secondAttribute="leadingMargin" id="jxK-21-guk"/>
                                         <constraint firstItem="aTQ-by-FBB" firstAttribute="top" secondItem="dQq-1u-XD2" secondAttribute="bottom" id="niW-72-0pk"/>
                                         <constraint firstItem="dQq-1u-XD2" firstAttribute="top" secondItem="rVp-X9-Fav" secondAttribute="topMargin" constant="15" id="rRJ-kn-eIb"/>
@@ -96,13 +113,16 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
+                    <navigationItem key="navigationItem" title="GitHubJobs" id="O0a-lH-DBt">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="LC9-cD-vct"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Lah-ch-PzQ" id="name-outlet-Lah-ch-PzQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.8" y="132.6837"/>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68369999999999"/>
         </scene>
     </scenes>
 </document>
