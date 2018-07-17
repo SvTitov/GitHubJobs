@@ -15,10 +15,19 @@ namespace GitHubJobs.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIBarButtonItem filter { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView tableView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (filter != null) {
+                filter.Dispose ();
+                filter = null;
+            }
+
             if (tableView != null) {
                 tableView.Dispose ();
                 tableView = null;

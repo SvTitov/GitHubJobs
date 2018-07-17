@@ -131,6 +131,10 @@
     <Compile Include="Tables\Cells\JobCell.designer.cs">
       <DependentUpon>JobCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="CriteriaController.cs" />
+    <Compile Include="CriteriaController.designer.cs">
+      <DependentUpon>CriteriaController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GitHubJobs.Core\GitHubJobs.Core.csproj">

@@ -10,6 +10,7 @@ using GitHubJobs.Core.Data.Models.Incoming;
 using GitHubJobs.Core.Data.Models.Outgoing;
 using System.Linq;
 using CoreGraphics;
+using GitHubJobs.Core.Events;
 
 namespace GitHubJobs.iOS
 {
@@ -30,17 +31,32 @@ namespace GitHubJobs.iOS
             base.ViewDidLoad();
 
             _viewModel = ApplicationStarter.AppKernel.Get<MainScreenViewModel>();
-            _viewModel.GetJobs(new JobRequest { Description = "C#", FullTime = "true" })
-                      .Subscribe(onNext: OnReceiveData);
 
             InitAlert();
 
-            this.ShowLoadingIndicator();
+            filter.Clicked += OnFilter;
 
             this.tableView.TableFooterView = new UIView();
             this.tableView.Source = _jobsSource = new JobsTableSource(Enumerable.Empty<JobDescription>());
             this.tableView.NumberOfRowsInSection(1);
         }
+
+        void OnFilter(object sender, EventArgs e)
+        {
+            var criteriaController = Storyboard.InstantiateViewController("CriteriaController") ;
+            if (criteriaController is ICriteriaEdit castCritContrl)
+            {
+                castCritContrl.OnSubmit += (JobRequest request) => 
+                {
+                    ShowLoadingIndicator();
+                    _viewModel.GetJobs(request)
+                      .Subscribe(onNext: OnReceiveData);
+                };
+            }
+
+            PresentModalViewController(criteriaController, true);
+        }
+
 
         private void InitAlert()
         {

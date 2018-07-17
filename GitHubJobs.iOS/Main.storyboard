@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dka-b8-25F">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -30,6 +30,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0"/>
+                        <viewControllerLayoutGuide type="bottom" id="1"/>
+                    </layoutGuides>
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lah-ch-PzQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -118,11 +122,87 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Lah-ch-PzQ" id="name-outlet-Lah-ch-PzQ"/>
+                        <outlet property="filter" destination="LC9-cD-vct" id="name-outlet-LC9-cD-vct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68369999999999"/>
+            <point key="canvasLocation" x="136.8" y="132.6837"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xfZ-nf-gpf">
+            <objects>
+                <viewController id="MoU-F9-3SW" sceneMemberID="viewController" customClass="CriteriaController" storyboardIdentifier="CriteriaController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gqx-PN-kLK"/>
+                        <viewControllerLayoutGuide type="bottom" id="UyY-8P-jbx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UYi-Aw-Vfk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Criteria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwM-0O-MPj">
+                                <rect key="frame" x="160" y="70" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YkP-Qb-1UV">
+                                <rect key="frame" x="16" y="106" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KwZ-WP-dCa">
+                                <rect key="frame" x="16" y="151" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pz8-jO-PEQ" on="YES">
+                                <rect key="frame" x="16" y="196" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zz-Cr-WDL">
+                                <rect key="frame" x="85" y="201.5" width="64.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYa-78-6F3">
+                                <rect key="frame" x="162.5" y="617" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KwZ-WP-dCa" firstAttribute="leading" secondItem="UYi-Aw-Vfk" secondAttribute="leadingMargin" id="9Qy-cf-aaN"/>
+                            <constraint firstItem="5zz-Cr-WDL" firstAttribute="centerY" secondItem="Pz8-jO-PEQ" secondAttribute="centerY" id="JHb-5O-rRs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YkP-Qb-1UV" secondAttribute="trailing" id="KOH-Jl-Us9"/>
+                            <constraint firstItem="eYa-78-6F3" firstAttribute="centerX" secondItem="UYi-Aw-Vfk" secondAttribute="centerX" id="Mf0-lB-Se0"/>
+                            <constraint firstItem="KwZ-WP-dCa" firstAttribute="top" secondItem="YkP-Qb-1UV" secondAttribute="bottom" constant="15" id="jAA-mG-1Nf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KwZ-WP-dCa" secondAttribute="trailing" id="jB1-bW-I2g"/>
+                            <constraint firstItem="YkP-Qb-1UV" firstAttribute="top" secondItem="qwM-0O-MPj" secondAttribute="bottom" constant="15" id="jgS-5f-jTY"/>
+                            <constraint firstItem="YkP-Qb-1UV" firstAttribute="centerX" secondItem="UYi-Aw-Vfk" secondAttribute="centerX" id="lsi-Cl-7rO"/>
+                            <constraint firstItem="UyY-8P-jbx" firstAttribute="top" secondItem="eYa-78-6F3" secondAttribute="bottom" constant="20" id="oe5-Gz-DrL"/>
+                            <constraint firstItem="Pz8-jO-PEQ" firstAttribute="leading" secondItem="KwZ-WP-dCa" secondAttribute="leading" id="pLT-uW-gDB"/>
+                            <constraint firstItem="Pz8-jO-PEQ" firstAttribute="top" secondItem="KwZ-WP-dCa" secondAttribute="bottom" constant="15" id="phS-qW-Rrc"/>
+                            <constraint firstItem="KwZ-WP-dCa" firstAttribute="centerX" secondItem="UYi-Aw-Vfk" secondAttribute="centerX" id="u7G-wx-Xr8"/>
+                            <constraint firstItem="5zz-Cr-WDL" firstAttribute="leading" secondItem="Pz8-jO-PEQ" secondAttribute="trailing" constant="20" id="vCo-os-Uaz"/>
+                            <constraint firstItem="qwM-0O-MPj" firstAttribute="centerX" secondItem="UYi-Aw-Vfk" secondAttribute="centerX" id="vX0-qt-v7U"/>
+                            <constraint firstItem="YkP-Qb-1UV" firstAttribute="leading" secondItem="UYi-Aw-Vfk" secondAttribute="leadingMargin" id="ySY-me-1b0"/>
+                            <constraint firstItem="qwM-0O-MPj" firstAttribute="top" secondItem="gqx-PN-kLK" secondAttribute="bottom" constant="50" id="yT3-lG-PEl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="submit" destination="eYa-78-6F3" id="name-outlet-eYa-78-6F3"/>
+                        <outlet property="description" destination="YkP-Qb-1UV" id="name-outlet-YkP-Qb-1UV"/>
+                        <outlet property="isFullTime" destination="Pz8-jO-PEQ" id="name-outlet-Pz8-jO-PEQ"/>
+                        <outlet property="location" destination="KwZ-WP-dCa" id="name-outlet-KwZ-WP-dCa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oe8-3k-wkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="877.6" y="132.6837"/>
         </scene>
     </scenes>
 </document>
